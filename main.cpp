@@ -1,4 +1,7 @@
 #include <string>
+#include <sys/resource.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 extern "C" {
 #include <linux/input.h>
@@ -33,6 +36,11 @@ int main(int argc, char *argv[]) {
 	const point display_offset = {std::stoi(argv[3]), std::stoi(argv[4])};
 	point mouse_pos            = {std::stoi(argv[5]), std::stoi(argv[6])};
 	input_event input;
+	int which = PRIO_PROCESS;
+	id_t pid;
+
+	pid = getpid();
+	setpriority(which, pid, -19);
 
 	while (read_event(input)) {
 		// input.code == 1 is y axis, 0 is x axis. type 2 is mouse movements & scrollwheel events
