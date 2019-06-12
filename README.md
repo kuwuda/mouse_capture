@@ -6,6 +6,9 @@ Requires [Interception tools](https://gitlab.com/interception/linux/tools), Sway
 The script works by intercepting evdev input and ignoring all input that would cause the mouse to leave a given screen.
 It's currently very janky, requiring the use of slurp to get initial cursor position, and passing that as an argument to mon_lock
 
+Sway / wlroots does have built-in support for mouse capture, but I couldn't find a way to easily bind it to a key or a command, 
+and I'm not familiar enough with it's codebase to change that.
+
 # Compilation / installation
 ```
 git clone https://github.com/kuwuda/mouse_capture.git
