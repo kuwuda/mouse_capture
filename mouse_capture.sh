@@ -14,4 +14,4 @@ DISPLAY=$(swaymsg -t get_outputs | jq -r '.. | select(.focused? == true) | (.rec
 
 ARGS=$DISPLAY+$(slurp -p | cut -f1 -d" " | tr "," " ")
 
-intercept -g $DEVNODE | /home/kusu/scripts/mon_lock $ARGS | uinput -d $DEVNODE
+intercept -g $DEVNODE | mon_lock $ARGS | uinput -d $DEVNODE
